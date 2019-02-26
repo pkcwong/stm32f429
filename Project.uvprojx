@@ -10,13 +10,13 @@
       <TargetName>STM32F429IGT6</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F429IGTx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.11.0</PackID>
+          <PackID>Keil.STM32F4xx_DFP.2.13.0</PackID>
           <PackURL>http://www.keil.com/pack</PackURL>
           <Cpu>IRAM(0x20000000,0x30000) IRAM2(0x10000000,0x10000) IROM(0x08000000,0x100000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -184,6 +184,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>2</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -311,7 +312,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>3</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -324,6 +325,7 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -491,11 +493,6 @@
               <FilePath>.\src\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_flash_ramfunc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_fmc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_fmc.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_fmpi2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_fmpi2c.c</FilePath>
@@ -616,9 +613,9 @@
               <FilePath>.\src\lib\gpio.cpp</FilePath>
             </File>
             <File>
-              <FileName>uart.cpp</FileName>
+              <FileName>led.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\lib\uart.cpp</FilePath>
+              <FilePath>.\src\lib\led.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -631,9 +628,9 @@
               <FilePath>.\src\config\gpio_config.cpp</FilePath>
             </File>
             <File>
-              <FileName>uart_config.cpp</FileName>
+              <FileName>led_config.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\config\uart_config.cpp</FilePath>
+              <FilePath>.\src\config\led_config.cpp</FilePath>
             </File>
           </Files>
         </Group>

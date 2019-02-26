@@ -7,16 +7,16 @@
 class GPIO
 {
 
-	private:
-	GPIO_TypeDef* _GPIO_;
-	GPIO_InitTypeDef GPIO_InitStructure;
+public:
+	GPIO(GPIO_TypeDef* GPIO_PORT, uint16_t Pin);
+	void init(GPIOMode_TypeDef mode, GPIOSpeed_TypeDef speed, GPIOOType_TypeDef output, GPIOPuPd_TypeDef pull);
+	void set();
+	void reset();
+	void toggle();
 
-	public:
-	GPIO(GPIO_TypeDef* _GPIO_, uint16_t Pin);
-	void init(GPIOMode_TypeDef GPIO_Mode, GPIOSpeed_TypeDef GPIO_Speed, GPIOOType_TypeDef GPIO_OType, GPIOPuPd_TypeDef GPIO_PuPd);
-	GPIO_TypeDef* get_Port();
-	uint16_t get_Pin();
-	uint8_t get_PinSource();
+private:
+	GPIO_TypeDef* port;
+	GPIO_InitTypeDef structure;
 
 };
 

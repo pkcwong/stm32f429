@@ -1,94 +1,76 @@
 #include "gpio.h"
 
-GPIO::GPIO(GPIO_TypeDef* _GPIO_, uint16_t Pin)
+GPIO::GPIO(GPIO_TypeDef* port, uint16_t pin)
 {
-	this->_GPIO_ = _GPIO_;
-	this->GPIO_InitStructure.GPIO_Pin = Pin;
+	this->port = port;
+	this->structure.GPIO_Pin = pin;
 }
 
-void GPIO::init(GPIOMode_TypeDef GPIO_Mode, GPIOSpeed_TypeDef GPIO_Speed, GPIOOType_TypeDef GPIO_OType, GPIOPuPd_TypeDef GPIO_PuPd)
+void GPIO::init(GPIOMode_TypeDef mode, GPIOSpeed_TypeDef speed, GPIOOType_TypeDef output, GPIOPuPd_TypeDef pull)
 {
-	if (this->_GPIO_ == GPIOA)
+	uint32_t RCC_AHB1Periph;
+	if (this->port == GPIOA)
 	{
-		RCC_APB2PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOA;
 	}
-	else if (this->_GPIO_ == GPIOB)
+	if (this->port == GPIOB)
 	{
-		RCC_APB2PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOB;
 	}
-	else if (this->_GPIO_ == GPIOC)
+	if (this->port == GPIOC)
 	{
-		RCC_APB2PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOC;
 	}
-	else if (this->_GPIO_ == GPIOD)
+	if (this->port == GPIOD)
 	{
-		RCC_APB2PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOD;
 	}
-	else if (this->_GPIO_ == GPIOE)
+	if (this->port == GPIOE)
 	{
-		RCC_APB2PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOE;
 	}
-	else if (this->_GPIO_ == GPIOF)
+	if (this->port == GPIOF)
 	{
-		RCC_APB2PeriphClockCmd(RCC_AHB1Periph_GPIOF, ENABLE);
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOF;
 	}
-	else if (this->_GPIO_ == GPIOG)
+	if (this->port == GPIOG)
 	{
-		RCC_APB2PeriphClockCmd(RCC_AHB1Periph_GPIOG, ENABLE);
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOG;
 	}
-	this->GPIO_InitStructure.GPIO_Mode = GPIO_Mode;
-	this->GPIO_InitStructure.GPIO_Speed = GPIO_Speed;
-	this->GPIO_InitStructure.GPIO_OType = GPIO_OType;
-	this->GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd;
-	GPIO_Init(this->_GPIO_, &(this->GPIO_InitStructure));
+	if (this->port == GPIOH)
+	{
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOH;
+	}
+	if (this->port == GPIOI)
+	{
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOI;
+	}
+	if (this->port == GPIOJ)
+	{
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOJ;
+	}
+	if (this->port == GPIOK)
+	{
+		RCC_AHB1Periph = RCC_AHB1Periph_GPIOK;
+	}
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph, ENABLE);
+	this->structure.GPIO_Mode = mode;
+	this->structure.GPIO_OType = output;
+	this->structure.GPIO_PuPd = pull;
+	GPIO_Init(this->port, &this->structure);
 }
 
-GPIO_TypeDef* GPIO::get_Port()
+void GPIO::set()
 {
-	return this->_GPIO_;
+	GPIO_SetBits(this->port, this->structure.GPIO_Pin);
 }
 
-uint16_t GPIO::get_Pin()
+void GPIO::reset()
 {
-	return this->GPIO_InitStructure.GPIO_Pin;
+	GPIO_ResetBits(this->port, this->structure.GPIO_Pin);
 }
 
-uint8_t GPIO::get_PinSource()
+void GPIO::toggle()
 {
-	switch(this->GPIO_InitStructure.GPIO_Pin)
-	{
-		case GPIO_Pin_0:
-			return GPIO_PinSource0;
-		case GPIO_Pin_1:
-			return GPIO_PinSource1;
-		case GPIO_Pin_2:
-			return GPIO_PinSource2;
-		case GPIO_Pin_3:
-			return GPIO_PinSource3;
-		case GPIO_Pin_4:
-			return GPIO_PinSource4;
-		case GPIO_Pin_5:
-			return GPIO_PinSource5;
-		case GPIO_Pin_6:
-			return GPIO_PinSource6;
-		case GPIO_Pin_7:
-			return GPIO_PinSource7;
-		case GPIO_Pin_8:
-			return GPIO_PinSource8;
-		case GPIO_Pin_9:
-			return GPIO_PinSource9;
-		case GPIO_Pin_10:
-			return GPIO_PinSource10;
-		case GPIO_Pin_11:
-			return GPIO_PinSource11;
-		case GPIO_Pin_12:
-			return GPIO_PinSource12;
-		case GPIO_Pin_13:
-			return GPIO_PinSource13;
-		case GPIO_Pin_14:
-			return GPIO_PinSource14;
-		case GPIO_Pin_15:
-			return GPIO_PinSource15;
-	}
-	return 0;
+	GPIO_ToggleBits(this->port, this->structure.GPIO_Pin);
 }
