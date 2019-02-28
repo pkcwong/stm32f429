@@ -3,7 +3,11 @@
 
 #include "gpio.h"
 
+extern GPIO PA0;
 extern GPIO PB0;
 extern GPIO PB1;
+extern GPIO PC13;
+extern GPIO PH2;
+extern GPIO PH3;
 
 #endif

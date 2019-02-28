@@ -1,0 +1,6 @@
+#include "button_config.h"
+
+BUTTON KEY0(&PH3, GPIO_PuPd_UP);
+BUTTON KEY1(&PH2, GPIO_PuPd_UP);
+BUTTON KEY2(&PC13, GPIO_PuPd_UP);
+BUTTON KEY_UP(&PA0, GPIO_PuPd_DOWN);

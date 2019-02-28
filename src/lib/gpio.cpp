@@ -74,3 +74,15 @@ void GPIO::toggle()
 {
 	GPIO_ToggleBits(this->port, this->structure.GPIO_Pin);
 }
+
+bool GPIO::read()
+{
+	if (this->structure.GPIO_Mode == GPIO_Mode_OUT)
+	{
+		return GPIO_ReadOutputDataBit(this->port, this->structure.GPIO_Pin);
+	}
+	else
+	{
+		return GPIO_ReadInputDataBit(this->port, this->structure.GPIO_Pin);
+	}
+}

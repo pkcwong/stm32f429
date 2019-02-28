@@ -13,6 +13,7 @@ public:
 	void set();
 	void reset();
 	void toggle();
+	bool read();
 
 private:
 	GPIO_TypeDef* port;

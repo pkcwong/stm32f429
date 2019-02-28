@@ -617,6 +617,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\lib\led.cpp</FilePath>
             </File>
+            <File>
+              <FileName>button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\lib\button.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -631,6 +636,11 @@
               <FileName>led_config.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\config\led_config.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>button_config.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\config\button_config.cpp</FilePath>
             </File>
           </Files>
         </Group>
