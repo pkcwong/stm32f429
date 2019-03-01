@@ -4,6 +4,7 @@
 #include "gpio_config.h"
 #include "button_config.h"
 #include "led_config.h"
+#include "usart_config.h"
 
 int main(void);
 

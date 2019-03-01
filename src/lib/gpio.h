@@ -14,6 +14,8 @@ public:
 	void reset();
 	void toggle();
 	bool read();
+	GPIO_TypeDef* getPort();
+	uint8_t getPinSource();
 
 private:
 	GPIO_TypeDef* port;
