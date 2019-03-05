@@ -61,7 +61,6 @@ void USART::interrupt(void (*callback)(const char byte))
 
 void USART1_IRQHandler()
 {
-	GPIO_SetBits(GPIOB, GPIO_Pin_1);
 	if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
 	{
 		USART_ClearITPendingBit(USART1, USART_IT_RXNE);

@@ -18,6 +18,7 @@ int main(void)
 		if (KEY0.read())
 		{
 			DS1.on();
+			COM1.send('A');
 		}
 		else
 		{

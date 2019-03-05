@@ -22,6 +22,9 @@ private:
 
 };
 
-void USART1_IRQHandler();
+extern "C"
+{
+	void USART1_IRQHandler();
+}
 
 #endif
