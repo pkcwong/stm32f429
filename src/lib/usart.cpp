@@ -51,6 +51,14 @@ void USART::send(const char byte)
 	USART_SendData(this->type, byte);
 }
 
+void USART::send(const char* msg)
+{
+	for (char* ptr = (char*) msg; *ptr != '\0'; ptr++)
+	{
+		this->send(*ptr);
+	}
+}
+
 void USART::interrupt(void (*callback)(const char byte))
 {
 	if (this->type == USART1)
